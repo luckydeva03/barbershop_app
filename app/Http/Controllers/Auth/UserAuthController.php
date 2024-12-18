@@ -28,18 +28,24 @@ class UserAuthController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        return redirect()->route('user-management.login')->with('success', 'User created successfully');
+        return redirect()->route('user.login')->with('success', 'User created successfully');
     }
 
-    // User Login
     public function login(LoginForm $request)
     {
         $validated = $request->validated();
 
-       if(Auth::guard('user-management')->attempt($validated)){
-            return redirect()->route('user-management.dashboard');
+       if(Auth::guard('user')->attempt($validated)){
+            return redirect()->route('user.dashboard');
         }
 
         return back()->with('error', 'Invalid credentials');
+    }
+
+    public function logout()
+    {
+        Auth::guard('user')->logout();
+
+        return redirect()->route('user.login');
     }
 }
