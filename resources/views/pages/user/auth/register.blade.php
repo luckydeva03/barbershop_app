@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Barbershop</title>
+    <title>Register - Barbershop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -29,7 +29,7 @@
 </head>
 <body>
 <div class="form-container">
-    <h3 class="text-center mb-4">Login</h3>
+    <h3 class="text-center mb-4">Register</h3>
     @if ($errors->any())
         <div class="alert alert-danger">
             @foreach ($errors->all() as $error)
@@ -37,8 +37,12 @@
             @endforeach
         </div>
     @endif
-    <form method="POST" action="{{ route('user.login') }}">
+    <form method="POST" action="{{ route('user.register') }}">
         @csrf
+        <div class="mb-3">
+            <label for="name" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+        </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email" required>
@@ -47,8 +51,12 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password" required>
         </div>
-        <button type="submit" class="btn btn-gold w-100">Login</button>
-        <p class="mt-3 text-center">Belum punya akun? <a href="{{ route('user.register') }}" class="text-decoration-none text-warning">Daftar</a></p>
+        <div class="mb-3">
+            <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
+            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Masukkan ulang password" required>
+        </div>
+        <button type="submit" class="btn btn-gold w-100">Register</button>
+        <p class="mt-3 text-center">Sudah punya akun? <a href="{{ route('user.login') }}" class="text-decoration-none text-warning">Login</a></p>
     </form>
 </div>
 </body>
