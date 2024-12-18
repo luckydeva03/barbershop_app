@@ -4,9 +4,9 @@ use App\Http\Controllers\Admin\CodeReedemController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Auth\AdminAuthController;
+use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Route\AdminController;
 use App\Http\Controllers\User\UserPointController;
-use App\Http\Controllers\UserAuthController;
 use App\Http\Middleware\AdminAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
