@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Route\AdminController;
+use App\Http\Controllers\User\UserPointController;
+use App\Http\Controllers\UserAuthController;
 use App\Http\Middleware\AdminAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +33,28 @@ Route::prefix('sudut-potong/admin')->group(function () {
         Route::get('review', [ReviewController::class, 'index'])->name('admin.review.index');
         Route::post('review/toggle-approval/{id}', [ReviewController::class, 'toggleApproval'])->name('admin.review.toggle-approval');
     });
+});
+
+Route::prefix('/')->group(function () {
+    Route::get('login', [UserAuthController::class, 'showLoginForm'])->name('user.login');
+    Route::post('login', [UserAuthController::class, 'login'])->name('user.login.post');
+    Route::get('register', [UserAuthController::class, 'showRegisterForm'])->name('user.register');
+    Route::post('register', [UserAuthController::class, 'register'])->name('user.register.post');
+
+    Route::middleware('auth:user')->group(function () {
+        Route::post('logout', [UserAuthController::class, 'logout'])->name('user.logout');
+        Route::get('me', [UserAuthController::class, 'me'])->name('user.me');
+
+        //  Review
+        Route::get('review', [\App\Http\Controllers\User\ReviewController::class, 'index'])->name('user.review');
+        Route::post('review', [\App\Http\Controllers\User\ReviewController::class, 'store'])->name('user.review.store');
+
+        // History Point
+        Route::get('history-point', [UserPointController::class, 'showHistory'])->name('user.history-point');
+
+        // Redeem Code
+        Route::post('reedem-code', [UserPointController::class, 'reedemCode'])->name('user.reedem-code');
+    });
+
 });
 

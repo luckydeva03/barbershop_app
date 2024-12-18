@@ -42,10 +42,31 @@ class UserAuthController extends Controller
         return back()->with('error', 'Invalid credentials');
     }
 
+    public function me()
+    {
+        $user = Auth::guard('user')->user();
+
+        return response()->json([
+            'message' => 'User profile',
+            'status' => 'success',
+            'data' => $user,
+        ]);
+    }
+
     public function logout()
     {
         Auth::guard('user')->logout();
 
         return redirect()->route('user.login');
+    }
+
+    public function showLoginForm()
+    {
+        return view('pages.user.auth.login');
+    }
+
+    public function showRegisterForm()
+    {
+        return view('pages.user.auth.register');
     }
 }
