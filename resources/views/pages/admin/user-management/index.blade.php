@@ -7,8 +7,6 @@
 
 @section('content')
     <div class="container">
-        <h1>User Management</h1>
-
         <!-- Filter -->
         <form action="{{ route('admin.user-management.index') }}" method="GET" class="d-flex gap-2 mb-4">
             <input type="text" name="search" class="form-control" placeholder="Search by name or email"

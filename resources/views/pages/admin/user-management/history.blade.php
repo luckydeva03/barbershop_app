@@ -7,8 +7,6 @@
 
 @section('content')
     <div class="container">
-        <h1>User Point History</h1>
-
         <!-- User Details -->
         <div class="card mb-4">
             <div class="card-header">

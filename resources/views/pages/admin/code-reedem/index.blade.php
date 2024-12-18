@@ -7,8 +7,6 @@
 
 @section('content')
     <div class="container">
-        <h1>Code Redeem Management</h1>
-
         <!-- Filter Form -->
         <form action="{{ route('admin.code-reedem.index') }}" method="GET" class="d-flex gap-2 mb-4">
             <!-- Search by Points or Code -->

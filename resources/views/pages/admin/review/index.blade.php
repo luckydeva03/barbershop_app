@@ -7,8 +7,6 @@
 
 @section('content')
     <div class="container">
-        <h1>Review Management</h1>
-
         <!-- Filter Form -->
         <form action="{{ route('admin.review.index') }}" method="GET" class="d-flex gap-2 mb-4">
             <!-- Search by Content -->
