@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('title', 'User Management')
+@section('meta-tag')
+    <meta name="description" content="Admin Dashboard Overview for Haircut Backoffice">
+@endsection
+
 @section('content')
     <div class="container">
         <h1>User Management</h1>

@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('title', 'Redeem Code Management')
+@section('meta-tag')
+    <meta name="description" content="Admin Dashboard Overview for Haircut Backoffice">
+@endsection
+
 @section('content')
     <div class="container">
         <h1>Code Redeem Management</h1>
