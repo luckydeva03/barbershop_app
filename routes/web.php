@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Route\AdminController;
+use App\Http\Controllers\Route\UserPageController;
 use App\Http\Controllers\User\UserPointController;
 use App\Http\Middleware\AdminAuthMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,8 @@ Route::prefix('sudut-potong/admin')->group(function () {
         Route::post('review/toggle-approval/{id}', [ReviewController::class, 'toggleApproval'])->name('admin.review.toggle-approval');
     });
 });
+
+Route::get('/', [UserPageController::class, 'index'])->name('home');
 
 Route::prefix('/')->group(function () {
     Route::get('login', [UserAuthController::class, 'showLoginForm'])->name('user.login');

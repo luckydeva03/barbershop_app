@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* public/css/styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.intro {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.services .card {
+    margin-bottom: 20px;
+}
+
+.contact {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
