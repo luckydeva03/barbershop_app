@@ -9,6 +9,7 @@ use App\Http\Controllers\Route\AdminController;
 use App\Http\Controllers\Route\UserPageController;
 use App\Http\Controllers\User\UserPointController;
 use App\Http\Middleware\AdminAuthMiddleware;
+use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('sudut-potong/admin')->group(function () {
@@ -44,7 +45,7 @@ Route::prefix('/')->group(function () {
     Route::get('register', [UserAuthController::class, 'showRegisterForm'])->name('user.register');
     Route::post('register', [UserAuthController::class, 'register'])->name('user.register.post');
 
-    Route::middleware('auth:user')->group(function () {
+    Route::middleware(UserMiddleware::class)->group(function () {
         Route::post('logout', [UserAuthController::class, 'logout'])->name('user.logout');
         Route::get('me', [UserAuthController::class, 'me'])->name('user.me');
 
