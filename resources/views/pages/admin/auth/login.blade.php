@@ -51,7 +51,7 @@
         <button type="submit"  class="btn btn-primary btn-block mb-4 w-100">Sign in</button>
     </form>
     <footer class="text-center mt-4">
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> <a href="https://sudutweb.com">PT Sudutweb Teknologi Indonesia</a></p>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> <a href="#">Uisi</a></p>
     </footer>
 </div>
 
