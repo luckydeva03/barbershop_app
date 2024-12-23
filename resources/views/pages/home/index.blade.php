@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marco's Chop Shop</title>
+    <title>Altoz BarberShop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
@@ -119,7 +119,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark transparent fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Marco's Shop</a>
+        <a class="navbar-brand" href="#">Altoz Barbershop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -229,7 +229,7 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <p>&copy; 2024 Marco's Chop Shop. All rights reserved.</p>
+        <p>&copy; 2024 Altoz Hub. All rights reserved.</p>
     </div>
 </footer>
 

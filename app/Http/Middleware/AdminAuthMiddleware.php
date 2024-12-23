@@ -19,7 +19,6 @@ class AdminAuthMiddleware
     {
         // Periksa apakah admin sudah login
         if (!Auth::guard('admin')->check()) {
-            // Redirect ke halaman login jika belum login
             return redirect()->route('admin.login');
         }
 
