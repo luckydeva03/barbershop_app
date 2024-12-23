@@ -204,24 +204,14 @@
     <div class="container">
         <h2 class="text-center mb-5">Testimonials</h2>
         <div class="row">
+            @foreach($reviews as $review)
             <div class="col-md-4">
                 <div class="testimonial-item">
-                    <p>"The best barbershop experience I've ever had. Highly recommended!"</p>
-                    <strong>- John Doe</strong>
+                    <p>"{{ $review->content }}"</p>
+                    <strong>- {{ $review->user->name }}</strong>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="testimonial-item">
-                    <p>"Great service and attention to detail. Will definitely come back!"</p>
-                    <strong>- Jane Smith</strong>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial-item">
-                    <p>"Amazing atmosphere and skilled barbers. Five stars!"</p>
-                    <strong>- Mike Johnson</strong>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
