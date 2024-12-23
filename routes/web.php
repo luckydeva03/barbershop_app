@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CodeReedemController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Auth\AdminAuthController;
+use App\Http\Controllers\Auth\OauthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Route\AdminController;
 use App\Http\Controllers\Route\UserPageController;
@@ -40,11 +41,8 @@ Route::prefix('sudut-potong/admin')->group(function () {
 Route::get('/', [UserPageController::class, 'index'])->name('home');
 
 Route::prefix('/')->group(function () {
-    Route::get('login', [UserAuthController::class, 'showLoginForm'])->name('user.login');
-    Route::post('login', [UserAuthController::class, 'login'])->name('user.login.post');
-    Route::get('register', [UserAuthController::class, 'showRegisterForm'])->name('user.register');
-    Route::post('register', [UserAuthController::class, 'register'])->name('user.register.post');
-
+    Route::get('oauth/google/redirect', [OauthController::class, 'redirectToProvider'])->name('user.oauth.google');
+    Route::get('oauth/google/callback', [OauthController::class, 'handleProviderCallback'])->name('user.oauth.google.callback');
     Route::middleware(UserMiddleware::class)->group(function () {
         Route::post('logout', [UserAuthController::class, 'logout'])->name('user.logout');
         Route::get('me', [UserAuthController::class, 'me'])->name('user.me');
