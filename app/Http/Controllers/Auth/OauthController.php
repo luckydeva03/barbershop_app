@@ -15,7 +15,7 @@ class OauthController extends Controller
 
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('google')->user();
+        $user = Socialite::driver('google')->stateless()->user();
 
         $existingUser = User::firstOrCreate(
             ['email' => $user->email],
@@ -24,7 +24,7 @@ class OauthController extends Controller
 
         auth('user')->login($existingUser);
 
-        return redirect()->route('user.me');
+        return redirect()->route('user.dashboard');
     }
 
 }

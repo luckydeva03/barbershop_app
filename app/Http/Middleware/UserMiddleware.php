@@ -16,7 +16,7 @@ class UserMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(!auth('user')->check()){
-            return redirect()->route('user.login');
+            return redirect()->route('home');
         }
         return $next($request);
     }

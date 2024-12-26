@@ -47,6 +47,9 @@ Route::prefix('/')->group(function () {
         Route::post('logout', [UserAuthController::class, 'logout'])->name('user.logout');
         Route::get('me', [UserAuthController::class, 'me'])->name('user.me');
 
+        // Dashboard
+        Route::get('dashboard', [UserPageController::class, 'dashboard'])->name('user.dashboard');
+
         //  Review
         Route::get('review', [\App\Http\Controllers\User\ReviewController::class, 'index'])->name('user.review');
         Route::post('review', [\App\Http\Controllers\User\ReviewController::class, 'store'])->name('user.review.store');

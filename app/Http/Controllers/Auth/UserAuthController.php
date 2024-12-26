@@ -57,7 +57,7 @@ class UserAuthController extends Controller
     {
         Auth::guard('user')->logout();
 
-        return redirect()->route('user.login');
+        return redirect()->route('home');
     }
 
     public function showLoginForm()

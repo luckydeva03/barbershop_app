@@ -13,4 +13,9 @@ class UserPageController extends Controller
         $reviews = Review::where('is_approved', true)->get();
         return view('pages.home.index', compact('reviews'));
     }
+
+    public function dashboard()
+    {
+        return view('pages.user.dashboard.index');
+    }
 }
