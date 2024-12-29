@@ -70,6 +70,7 @@ class UserPointController extends Controller
             $user->save();
 
             $reedemCode->is_active = 0;
+            $reedemCode->user_id = $user->id;
             $reedemCode->save();
 
             DB::commit();

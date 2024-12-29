@@ -55,10 +55,11 @@ Route::prefix('/')->group(function () {
         Route::post('review', [\App\Http\Controllers\User\ReviewController::class, 'store'])->name('user.review.store');
 
         // History Point
-        Route::get('history-point', [UserPointController::class, 'showHistory'])->name('user.history-point');
+        Route::get('history-point', [UserPageController::class, 'transactionHistory'])->name('user.history-point');
+//        Route::get('history-point', [UserPointController::class, 'showHistory'])->name('user.history-point');
 
         // Redeem Code
-        Route::post('reedem-code', [UserPointController::class, 'reedemCode'])->name('user.reedem-code');
+        Route::post('redeem-code', [UserPointController::class, 'redeemCode'])->name('user.redeem-code');
     });
 
 });

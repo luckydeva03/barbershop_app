@@ -28,10 +28,13 @@ class ReviewController extends Controller
         ]);
 
         $this->review->updateOrCreate(
-            ['user_id' => auth()->id()],
+            ['user_id' => auth('user')->id()],
             ['content' => $validated['content']]
         );
 
-        return redirect()->route('user.review');
+        return response()->json([
+            'message' => 'Review created successfully',
+            'status' => 'success',
+        ]);
     }
 }

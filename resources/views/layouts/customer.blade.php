@@ -103,9 +103,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto d-block d-md-none">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-solid fa-user"></i> Profile</a>
-                    <a class="nav-link" href="#"><i class="fa-solid fa-gift"></i> Redeem Code</a>
-                    <a class="nav-link" href="#"><i class="fa-solid fa-history"></i> Transaction History</a>
+                    <a class="nav-link" href="{{ route('user.dashboard') }}"><i class="fa-solid fa-user"></i> Profile</a>
+                    <a class="nav-link" href="{{ route('user.history-point') }}"><i class="fa-solid fa-history"></i> Transaction History</a>
                     <a class="nav-link" href="{{route('user.logout')}}"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
                 </li>
             </ul>
@@ -116,19 +115,18 @@
 <div class="container-fluid">
     <div class="row">
         <nav class="col-md-2 sidebar d-none d-md-block position-fixed">
-            <a href="#"><i class="fa-solid fa-user me-2"></i> Profile</a>
-            <a href="#"><i class="fa-solid fa-gift me-2"></i> Redeem Code</a>
-            <a href="#"><i class="fa-solid fa-history me-2"></i> Transaction History</a>
+            <a href="{{ route('user.dashboard') }}"><i class="fa-solid fa-user me-2"></i> Profile</a>
+            <a href="{{ route('user.history-point') }}"><i class="fa-solid fa-history me-2"></i> Transaction History</a>
             <form action="{{ route('user.logout') }}" method="post">
                 @csrf
                 <button type="submit" class="btn btn-primary w-100"><i class="fa-solid fa-sign-out-alt me-2"></i> Logout</button>
+            </form>
         </nav>
         <main class="col-md-10 ms-sm-auto col-lg-10 offset-md-2 px-md-4 content">
             @yield('content')
         </main>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

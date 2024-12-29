@@ -8,10 +8,10 @@
                 <div class="card shadow-lg border-0 rounded-xl overflow-hidden">
                     <div class="card-body text-center">
                         <!-- Profile Image with elegant frame -->
-                        <img src="https://via.placeholder.com/150" class="img-fluid rounded-circle mb-3 border border-dark" alt="Profile Image" style="width: 150px; height: 150px;">
-                        <h4 class="card-title font-weight-bold text-dark mb-2">Agung Dwi</h4>
-                        <p class="card-text text-muted mb-2"><strong>Email:</strong> test@example.com</p>
-                        <p class="card-text mb-3"><strong class="text-primary">Points:</strong> 80 Points</p>
+                        <img src="{{ asset('images/user.jpg') }}" class="img-fluid rounded-circle mb-4 border border-dark" alt="Profile Image" style="width: 150px; height: 150px;">
+                        <h4 class="card-title font-weight-bold text-dark mb-2">{{ $user->name }}</h4>
+                        <p class="card-text text-muted mb-2"><strong>Email:</strong> {{ $user->email }}</p>
+                        <p class="card-text mb-3"><strong class="text-primary">Your Current Points:</strong> {{ $user->points }} Points</p>
                     </div>
                 </div>
             </div>
@@ -22,45 +22,118 @@
                 <!-- Testimonials Section -->
                 <div class="card shadow-lg border-0 rounded-xl mb-5">
                     <div class="card-header bg-dark text-white text-center font-weight-bold py-3">
-                        <h5>What Our Clients Say</h5>
+                        <h5>Write Your Testimony</h5>
                     </div>
                     <div class="card-body">
-                        <div class="testimonial">
-                            <p class="text-muted">"Best haircut I’ve ever had! The service was excellent and the ambiance is very relaxing."</p>
-                            <p class="font-weight-bold text-dark">John Doe</p>
-                            <p class="small text-muted">Regular Client</p>
-                        </div>
-                        <div class="testimonial mt-3">
-                            <p class="text-muted">"The staff is friendly, and they really know how to make you feel at home. Highly recommend!"</p>
-                            <p class="font-weight-bold text-dark">Jane Smith</p>
-                            <p class="small text-muted">VIP Member</p>
-                        </div>
+                        <form id="reviewForm" class="d-flex flex-column gap-1 justify-content-center">
+                            @csrf
+                            <div class="mb-3">
+                                <textarea class="form-control" name="content" rows="6" placeholder="Write your testimony here..." required>{{ $review ? $review->content : '' }}</textarea>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary text-black btn-lg">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
-                <!-- Special Offers -->
-                <div class="card shadow-lg border-0 rounded-xl mb-5">
-                    <div class="card-header bg-dark text-white text-center font-weight-bold py-3">
-                        <h5>Special Offers & Promotions</h5>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-3">
-                                <span class="font-weight-bold text-dark">20% Off on Your Next Haircut</span>
-                                <span class="badge badge-pill badge-primary">Active</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-3">
-                                <span class="font-weight-bold text-dark">50 Points for Every Referral</span>
-                                <span class="badge badge-pill badge-secondary">Ongoing</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-3">
-                                <span class="font-weight-bold text-dark">Free Styling Product with Premium Haircut</span>
-                                <span class="badge badge-pill badge-success">Available</span>
-                            </li>
-                        </ul>
+                <!-- Redeem Code Section -->
+                <div class="col-12">
+                    <div class="card shadow-lg border-0 rounded-xl mb-5">
+                        <div class="card-header bg-dark text-white text-center font-weight-bold py-3">
+                            <h5>Redeem Your Code</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="redeemForm" class="d-flex justify-content-center">
+                                @csrf
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="code" placeholder="Enter your code here..." required>
+                                    <button type="submit" class="btn btn-primary text-black btn-lg">Redeem</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Include SweetAlert CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Review form submission
+            $('#reviewForm').on('submit', function(event) {
+                event.preventDefault();
+                let formData = $(this).serialize();
+
+                $.ajax({
+                    url: "{{ route('user.review.store') }}",
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: response.message,
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    },
+                    error: function(xhr) {
+                        let errors = xhr.responseJSON.errors;
+                        let errorMessage = '';
+                        $.each(errors, function(key, value) {
+                            errorMessage += value[0] + '<br>';
+                        });
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            html: errorMessage,
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    }
+                });
+            });
+
+            // Redeem form submission
+            $('#redeemForm').on('submit', function(event) {
+                event.preventDefault();
+                let formData = $(this).serialize();
+
+                $.ajax({
+                    url: "{{ route('user.redeem-code') }}",
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: response.message,
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    },
+                    error: function(xhr) {
+                        let errors = xhr.responseJSON.errors;
+                        let errorMessage = '';
+                        $.each(errors, function(key, value) {
+                            errorMessage += value[0] + '<br>';
+                        });
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            html: errorMessage,
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
