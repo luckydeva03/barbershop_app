@@ -127,7 +127,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/stores">Our Stores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#about">About</a>
@@ -139,7 +142,10 @@
                     <a class="nav-link" href="#testimonials">Testimonials</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" href="{{ route('user.oauth.google') }}">
+                    <a class="nav-link" href="/booking">Booking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" href="/login">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person me-2" viewBox="0 0 16 16">
                             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
                         </svg>
@@ -156,8 +162,8 @@
     <div class="container">
         <h1>Redefining the Barbershop Experience</h1>
         <p>Marco’s Chop Shop provides premium grooming services, focusing on quality and attention to detail to inspire confidence in every man. Each visit is designed as more than just a haircut—it's a tailored experience for the modern gentleman.</p>
-        <a href="#" class="btn btn-lg btn-primary me-2">Book Now</a>
-        <a href="#" class="btn btn-lg btn-outline-light">Our Stores</a>
+        <a href="{{ route('booking.index') }}" class="btn btn-lg btn-primary me-2">Book Now</a>
+        <a href="{{ route('stores.index') }}" class="btn btn-lg btn-outline-light">Our Stores</a>
     </div>
 </header>
 
@@ -185,14 +191,17 @@
         <h2>Inside Marco's Chop Shop</h2>
         <p>One Stop Premium Barbershop Experience</p>
         <div class="row">
-            <div class="col-md-4 mb-4">
-                <img src="{{ asset('images/image2.png') }}" width="400" height="400" class="img-fluid rounded" alt="Gallery Image 1">
+            <div class="col-md-3 mb-4">
+                <img src="{{ asset('clients/galeri/1.jpg') }}" class="img-fluid rounded" alt="Gallery Image 1">
             </div>
-            <div class="col-md-4 mb-4">
-                <img src="{{ asset('images/image2.png') }}" width="400" height="400" class="img-fluid rounded" alt="Gallery Image 2">
+            <div class="col-md-3 mb-4">
+                <img src="{{ asset('clients/galeri/2.jpg') }}" class="img-fluid rounded" alt="Gallery Image 2">
             </div>
-            <div class="col-md-4 mb-4">
-                <img src="{{ asset('images/image2.png') }}" width="400" height="400" class="img-fluid rounded" alt="Gallery Image 3">
+            <div class="col-md-3 mb-4">
+                <img src="{{ asset('clients/galeri/3.jpg') }}" class="img-fluid rounded" alt="Gallery Image 3">
+            </div>
+            <div class="col-md-3 mb-4">
+                <img src="{{ asset('clients/galeri/4.jpg') }}" class="img-fluid rounded" alt="Gallery Image 4">
             </div>
         </div>
         <a href="#" class="btn btn-primary">See More Captured Moments</a>

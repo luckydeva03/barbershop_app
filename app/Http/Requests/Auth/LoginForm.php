@@ -22,8 +22,8 @@ class LoginForm extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => 'required|email|max:255',
+            'password' => 'required|string|min:6|max:255',
         ];
     }
 
@@ -35,9 +35,13 @@ class LoginForm extends FormRequest
     public function messages(): array
     {
         return [
-            'email.required' => 'Email is required',
-            'email.email' => 'Email is invalid',
-            'password.required' => 'Password is required',
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Format email tidak valid',
+            'email.max' => 'Email maksimal 255 karakter',
+            'password.required' => 'Password wajib diisi',
+            'password.string' => 'Password harus berupa teks',
+            'password.min' => 'Password minimal 6 karakter',
+            'password.max' => 'Password maksimal 255 karakter',
         ];
     }
 }

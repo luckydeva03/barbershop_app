@@ -8,7 +8,8 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.31",
-        "laravel/socialite": "^5.16",
+        "laravel/sanctum": "^4.2",
+        "laravel/socialite": "^5.23",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
@@ -28,9 +29,6 @@
         }
     },
     "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        },
         "files": ["app/Helper/Common.php"]
     },
     "scripts": {

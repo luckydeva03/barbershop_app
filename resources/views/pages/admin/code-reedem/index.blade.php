@@ -21,7 +21,7 @@
             <table class="table table-bordered table-hover align-middle text-center">
                 <thead class="table-dark">
                 <tr>
-                    <th>#</th>
+                    <th>No</th>
                     <th>Code</th>
                     <th>Points</th>
                     <th>Active</th>

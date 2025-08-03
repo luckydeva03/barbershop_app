@@ -4,10 +4,12 @@ use App\Http\Controllers\Admin\CodeReedemController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Auth\AdminAuthController;
-use App\Http\Controllers\Auth\OauthController;
+use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Route\AdminController;
 use App\Http\Controllers\Route\UserPageController;
+use App\Http\Controllers\User\BookingController;
+use App\Http\Controllers\User\StoreController;
 use App\Http\Controllers\User\UserPointController;
 use App\Http\Middleware\AdminAuthMiddleware;
 use App\Http\Middleware\UserMiddleware;
@@ -38,11 +40,37 @@ Route::prefix('sudut-potong/admin')->group(function () {
     });
 });
 
+// Public Routes
 Route::get('/', [UserPageController::class, 'index'])->name('home');
 
+// Booking Routes (Public access)
+Route::prefix('booking')->group(function () {
+    Route::get('/', [BookingController::class, 'index'])->name('booking.index');
+    Route::get('/quick', [BookingController::class, 'quickBook'])->name('booking.quick');
+    Route::middleware('throttle:10,1')->group(function () {
+        Route::post('/whatsapp', [BookingController::class, 'redirectToWhatsApp'])->name('booking.whatsapp');
+    });
+});
+
+// Store Routes (Public access)
+Route::prefix('stores')->group(function () {
+    Route::get('/', [StoreController::class, 'index'])->name('stores.index');
+    Route::get('/data', [StoreController::class, 'getStores'])->name('stores.data');
+    Route::get('/{id}', [StoreController::class, 'show'])->name('stores.show')->where('id', '[0-9]+');
+});
+
+// User Auth and Protected Routes
 Route::prefix('/')->group(function () {
-    Route::get('oauth/google/redirect', [OauthController::class, 'redirectToProvider'])->name('user.oauth.google');
-    Route::get('oauth/google/callback', [OauthController::class, 'handleProviderCallback'])->name('user.oauth.google.callback');
+    // Public auth routes
+    Route::get('login', [UserAuthController::class, 'showLoginForm'])->name('user.login');
+    Route::post('login', [UserAuthController::class, 'login'])->name('user.login.post');
+    Route::get('register', [UserAuthController::class, 'showRegisterForm'])->name('user.register');
+    Route::post('register', [UserAuthController::class, 'register'])->name('user.register.post');
+    
+    // Google OAuth routes
+    Route::get('auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('google.login');
+    Route::get('auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback'])->name('google.callback');
+    
     Route::middleware(UserMiddleware::class)->group(function () {
         Route::post('logout', [UserAuthController::class, 'logout'])->name('user.logout');
         Route::get('me', [UserAuthController::class, 'me'])->name('user.me');
@@ -56,11 +84,9 @@ Route::prefix('/')->group(function () {
 
         // History Point
         Route::get('history-point', [UserPageController::class, 'transactionHistory'])->name('user.history-point');
-//        Route::get('history-point', [UserPointController::class, 'showHistory'])->name('user.history-point');
 
         // Redeem Code
         Route::post('redeem-code', [UserPointController::class, 'redeemCode'])->name('user.redeem-code');
     });
-
 });
 

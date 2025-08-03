@@ -8,9 +8,20 @@
                 <div class="card shadow-lg border-0 rounded-xl overflow-hidden">
                     <div class="card-body text-center">
                         <!-- Profile Image with elegant frame -->
-                        <img src="{{ asset('images/user.jpg') }}" class="img-fluid rounded-circle mb-4 border border-dark" alt="Profile Image" style="width: 150px; height: 150px;">
+                        @if($user->avatar)
+                            <img src="{{ $user->avatar }}" class="img-fluid rounded-circle mb-4 border border-dark" alt="Profile Image" style="width: 150px; height: 150px; object-fit: cover;">
+                        @else
+                            <img src="{{ asset('images/user.jpg') }}" class="img-fluid rounded-circle mb-4 border border-dark" alt="Profile Image" style="width: 150px; height: 150px;">
+                        @endif
                         <h4 class="card-title font-weight-bold text-dark mb-2">{{ $user->name }}</h4>
                         <p class="card-text text-muted mb-2"><strong>Email:</strong> {{ $user->email }}</p>
+                        @if($user->provider === 'google')
+                            <p class="card-text text-muted mb-2">
+                                <small class="badge bg-danger">
+                                    <i class="bi bi-google"></i> Google Account
+                                </small>
+                            </p>
+                        @endif
                         <p class="card-text mb-3"><strong class="text-primary">Your Current Points:</strong> {{ $user->points }} Points</p>
                     </div>
                 </div>

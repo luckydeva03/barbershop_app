@@ -21,7 +21,7 @@
             <table class="table table-bordered table-hover align-middle text-center">
                 <thead class="table-dark">
                 <tr>
-                    <th>#</th>
+                    <th>No</th>
                     <th>User</th>
                     <th>Review Content</th>
                     <th>Created At</th>
