@@ -49,8 +49,6 @@ URL: http://127.0.0.1:8000/sudut-potong/admin/login
 
 Available Admin Credentials:
 - Email: admin@haircut.com | Password: password123
-- Email: admin@backoffice-haircut.com | Password: admin123  
-- Email: manager@backoffice-haircut.com | Password: manager123
 ```
 
 ### ⚠️ **Troubleshooting Tampilan**
