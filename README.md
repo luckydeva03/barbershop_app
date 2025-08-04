@@ -1,5 +1,12 @@
 # 💇‍♂️ Backoffice Haircut Management System
 
+> **⚠️ IMPORTANT NOTICE / PEMBERITAHUAN PENTING**  
+> 🔒 **This repository is for DEMONSTRATION/PORTFOLIO purposes only**  
+> 🚫 **Repository ini hanya untuk tujuan DEMONSTRASI/PORTOFOLIO**  
+> ❌ **NOT FOR COMMERCIAL USE - Redistribution, modification, or commercial use is PROHIBITED**  
+> ❌ **BUKAN UNTUK KOMERSIAL - Dilarang redistribusi, modifikasi, atau penggunaan komersial**  
+> 📧 **Contact owner for licensing: [your-email@example.com]**
+
 A modern, comprehensive Laravel-based management system for haircut and beauty salon businesses. This application provides a complete solution for managing customers, services, loyalty programs, and business operations with advanced security features and Google OAuth integration.
 
 ## ✨ Key Features

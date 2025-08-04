@@ -25,3 +25,16 @@ yarn-error.log
 cookies.txt
 *.log
 /storage/framework/views/*.php
+
+# Sensitive configuration files
+/config/database.php
+/config/services.php
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Production sensitive data
+/storage/logs/*
+/storage/app/private/*
+/storage/oauth-*.key
