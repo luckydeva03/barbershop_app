@@ -2,8 +2,7 @@
 
 ## 📋 Update: Admin Panel Dihapus
 
-**⚠️ PENTING**: Interface admin untuk store management telah dihapus sesuai permintaan user. 
-Sekarang pengelolaan stores dilakukan melalui **kode langsung**.
+**⚠️ PENTING**: Pengelolaan stores dilakukan melalui **kode langsung**.
 
 ## 🔧 Cara Mengelola Stores Melalui Kode
 
