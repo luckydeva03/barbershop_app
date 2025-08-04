@@ -161,7 +161,7 @@
 <header class="hero">
     <div class="container">
         <h1>Redefining the Barbershop Experience</h1>
-        <p>Marco’s Chop Shop provides premium grooming services, focusing on quality and attention to detail to inspire confidence in every man. Each visit is designed as more than just a haircut—it's a tailored experience for the modern gentleman.</p>
+        <p>Altoz Hub Barbershop provides premium grooming services, focusing on quality and attention to detail to inspire confidence in every man. Each visit is designed as more than just a haircut—it's a tailored experience for the modern gentleman.</p>
         <a href="{{ route('booking.index') }}" class="btn btn-lg btn-primary me-2">Book Now</a>
         <a href="{{ route('stores.index') }}" class="btn btn-lg btn-outline-light">Our Stores</a>
     </div>
@@ -228,7 +228,7 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <p>&copy; 2024 Altoz Hub. All rights reserved.</p>
+        <p>&copy; 2025 Altoz Hub. All rights reserved.</p>
     </div>
 </footer>
 
